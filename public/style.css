@@ -1,0 +1,1445 @@
+/* =============================================
+   VARIABLES CSS (Custom Properties)
+   Aquí se definen todos los colores, sombras,
+   fuentes y medidas reutilizables en todo el sitio.
+   Cambiando estos valores se modifica todo el tema.
+   ============================================= */
+:root {
+  /* ---- Colores principales ---- */
+  --color-bg-primary: #0f172a;       /* Fondo principal (azul oscuro profundo) */
+  --color-bg-secondary: #1e293b;     /* Fondo secundario (azul grisáceo) */
+  --color-accent: #38bdf8;           /* Color de acento (celeste brillante) */
+  --color-accent-secondary: #8b5cf6; /* Color secundario (púrpura/violeta) */
+  --color-text-primary: #ffffff;     /* Texto principal (blanco) */
+  --color-text-secondary: #cbd5e1;   /* Texto secundario (gris claro) */
+  --color-text-muted: #64748b;       /* Texto tenue (gris medio) */
+  --color-border: #1e293b;           /* Color de bordes */
+  --color-card: #1e293b;             /* Fondo de tarjetas */
+  --color-card-hover: #233045;       /* Fondo de tarjetas al pasar el mouse */
+  --color-overlay: rgba(15, 23, 42, 0.85); /* Capa semitransparente para overlays */
+
+  /* ---- Gradientes (degradados) ---- */
+  --gradient-accent: linear-gradient(135deg, #38bdf8, #8b5cf6);              /* Degradado principal: celeste a púrpura */
+  --gradient-accent-reverse: linear-gradient(135deg, #8b5cf6, #38bdf8);      /* Degradado invertido: púrpura a celeste */
+  --gradient-dark: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);        /* Degradado oscuro */
+  --gradient-card: linear-gradient(145deg, #1e293b, #162032);                /* Degradado para tarjetas */
+
+  /* ---- Sombras ---- */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);       /* Sombra pequeña */
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.3);       /* Sombra mediana */
+  --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.4);      /* Sombra grande */
+  --shadow-glow: 0 0 30px rgba(56, 189, 248, 0.15);  /* Resplandor celeste */
+  --shadow-glow-secondary: 0 0 30px rgba(139, 92, 246, 0.15); /* Resplandor púrpura */
+
+  /* ---- Tipografía (fuentes) ---- */
+  --font-primary: 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif; /* Fuente principal del sistema */
+  --font-mono: 'Consolas', 'Courier New', monospace; /* Fuente monoespaciada (para código) */
+
+  /* ---- Tamaños y medidas ---- */
+  --max-width: 1200px;      /* Ancho máximo del contenido */
+  --header-height: 72px;    /* Altura de la barra de navegación */
+
+  /* ---- Transiciones (animaciones de cambio) ---- */
+  --transition-fast: 0.2s ease;   /* Transición rápida */
+  --transition-base: 0.3s ease;   /* Transición estándar */
+  --transition-slow: 0.5s ease;   /* Transición lenta */
+
+  /* ---- Bordes redondeados ---- */
+  --radius-sm: 8px;        /* Redondeo pequeño */
+  --radius-md: 12px;       /* Redondeo mediano */
+  --radius-lg: 16px;       /* Redondeo grande */
+  --radius-xl: 24px;       /* Redondeo extra grande */
+  --radius-full: 50%;      /* Redondeo completo (círculo) */
+}
+
+
+/* =============================================
+   RESET Y ESTILOS BASE
+   Elimina los márgenes/paddings por defecto del
+   navegador y establece valores base consistentes.
+   ============================================= */
+
+/* Reset universal: todos los elementos empiezan sin margen ni padding */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* El padding no afecta el ancho total */
+}
+
+/* Configuración base del HTML */
+html {
+  scroll-behavior: smooth;          /* Scroll suave al hacer clic en enlaces internos */
+  scroll-padding-top: var(--header-height); /* Compensa la altura del header fijo */
+  font-size: 16px;                  /* Tamaño base de fuente */
+}
+
+/* Estilos del body */
+body {
+  font-family: var(--font-primary);
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;   /* Suavizado de fuentes en macOS */
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;              /* Oculta scroll horizontal no deseado */
+}
+
+/* Imágenes responsivas: nunca se desbordan de su contenedor */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Enlaces heredan el color del texto y no tienen subrayado */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+/* Listas sin viñetas */
+ul {
+  list-style: none;
+}
+
+
+/* =============================================
+   TIPOGRAFÍA
+   ============================================= */
+
+/* Todos los encabezados usan negrita y menor altura de línea */
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+
+/* =============================================
+   CONTENEDOR PRINCIPAL
+   Centra el contenido horizontalmente con un
+   ancho máximo y padding lateral.
+   ============================================= */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+
+/* =============================================
+   HEADER / BARRA DE NAVEGACIÓN
+   Barra fija en la parte superior con efecto
+   de vidrio (glassmorphism: blur + transparencia).
+   ============================================= */
+.header {
+  position: fixed;         /* Se mantiene fijo al hacer scroll */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;           /* Siempre por encima de otros elementos */
+  background: rgba(15, 23, 42, 0.85);         /* Fondo semitransparente */
+  backdrop-filter: blur(20px);                /* Efecto vidrio */
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.06); /* Línea sutil inferior */
+  height: var(--header-height);
+  transition: background var(--transition-base), border-color var(--transition-base);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* Logo con estilo de código: <JC/> */
+.logo__text {
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: -0.02em;
+}
+
+.logo__accent {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;  /* Hace que el gradiente se aplique solo al texto */
+  background-clip: text;
+  -webkit-text-fill-color: transparent; /* Texto transparente para ver el gradiente */
+}
+
+/* Lista de navegación (escritorio) */
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+/* Cada enlace de navegación */
+.nav__link {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  position: relative;   /* Para posicionar la línea decorativa */
+  padding: 4px 0;
+  transition: color var(--transition-base);
+}
+
+/* Línea decorativa inferior que aparece al hacer hover */
+.nav__link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--gradient-accent);
+  border-radius: 2px;
+  transition: width var(--transition-base);
+}
+
+.nav__link:hover,
+.nav__link:focus-visible {
+  color: var(--color-text-primary);
+}
+
+.nav__link:hover::after,
+.nav__link:focus-visible::after {
+  width: 100%;  /* Línea se expande al ancho completo */
+}
+
+/* Botón hamburguesa para menú móvil (oculto en escritorio) */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.nav-toggle__bar {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--color-text-primary);
+  border-radius: 2px;
+  transition: transform var(--transition-base), opacity var(--transition-base);
+}
+
+
+/* =============================================
+   SECCIONES
+   Estilos base compartidos para todas las secciones
+   del sitio (padding, encabezados, etc.)
+   ============================================= */
+.section {
+  padding: 100px 0;
+  position: relative;
+}
+
+.section__header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+/* Etiqueta de sección (ej: "Sobre mí", "Habilidades") */
+.section__tag {
+  display: inline-block;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 6px 16px;
+  border-radius: 100px;
+  background: rgba(56, 189, 248, 0.1);
+  color: var(--color-accent);
+  margin-bottom: 16px;
+}
+
+/* Título principal de cada sección con gradiente */
+.section__title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 16px;
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Subtítulo de sección */
+.section__subtitle {
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+
+/* =============================================
+   BOTONES
+   Botones reutilizables con variantes:
+   - primary (relleno con gradiente)
+   - outline (borde transparente)
+   - small (versión pequeña)
+   - full (ancho completo)
+   ============================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: var(--font-primary);
+  border: 2px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-decoration: none;
+}
+
+/* Botón principal: con gradiente y sombra brillante */
+.btn--primary {
+  background: var(--gradient-accent);
+  color: var(--color-bg-primary);
+  box-shadow: 0 4px 15px rgba(56, 189, 248, 0.3);
+}
+
+.btn--primary:hover {
+  transform: translateY(-2px);         /* Se eleva ligeramente */
+  box-shadow: 0 6px 25px rgba(56, 189, 248, 0.4); /* Sombra más intensa */
+}
+
+/* Botón outline: transparente con borde */
+.btn--outline {
+  background: transparent;
+  color: var(--color-text-primary);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.btn--outline:hover {
+  border-color: var(--color-accent);
+  background: rgba(56, 189, 248, 0.08);
+  transform: translateY(-2px);
+}
+
+/* Variante pequeña (para overlays de proyectos) */
+.btn--small {
+  padding: 8px 20px;
+  font-size: 0.85rem;
+}
+
+/* Variante ancho completo */
+.btn--full {
+  width: 100%;
+  justify-content: center;
+}
+
+
+/* =============================================
+   HERO SECTION (Sección de portada/inicio)
+   Ocupa toda la pantalla (100vh), con figuras
+   decorativas flotantes de fondo animadas.
+   ============================================= */
+.hero {
+  min-height: 100vh;           /* Mínimo el alto de la ventana */
+  display: flex;
+  align-items: center;
+  padding-top: var(--header-height); /* Espacio para el header fijo */
+  overflow: hidden;
+  position: relative;
+}
+
+/* Contenedor de las figuras decorativas de fondo */
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none; /* No interfieren con clics */
+}
+
+/* Figuras con blur (efecto de desenfoque) que flotan */
+.hero__shape {
+  position: absolute;
+  border-radius: var(--radius-full);
+  filter: blur(80px);      /* Desenfoque intenso para efecto glow */
+  opacity: 0.12;
+}
+
+.hero__shape--1 {
+  width: 500px;
+  height: 500px;
+  background: var(--color-accent);
+  top: -10%;
+  right: -5%;
+  animation: floatShape 8s ease-in-out infinite; /* Animación flotante */
+}
+
+.hero__shape--2 {
+  width: 400px;
+  height: 400px;
+  background: var(--color-accent-secondary);
+  bottom: -10%;
+  left: -5%;
+  animation: floatShape 10s ease-in-out infinite reverse; /* Animación inversa */
+}
+
+.hero__shape--3 {
+  width: 300px;
+  height: 300px;
+  background: var(--color-accent);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: floatShape 12s ease-in-out infinite;
+}
+
+/* Contenido en grid de 2 columnas */
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero__content {
+  animation: fadeInUp 1s ease forwards; /* Animación de entrada */
+}
+
+.hero__greeting {
+  font-size: 1.1rem;
+  color: var(--color-accent);
+  font-weight: 500;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+}
+
+.hero__title {
+  margin-bottom: 24px;
+}
+
+/* Nombre con gradiente grande y llamativo */
+.hero__name {
+  display: block;
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 8px;
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Cargo profesional */
+.hero__role {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+
+.hero__description {
+  font-size: 1.1rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 32px;
+  max-width: 540px;
+}
+
+.hero__actions {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+/* Iconos de redes sociales */
+.hero__social {
+  display: flex;
+  gap: 16px;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: var(--color-bg-secondary);
+  color: var(--color-text-secondary);
+  transition: all var(--transition-base);
+}
+
+.social-link:hover {
+  background: rgba(56, 189, 248, 0.12);
+  color: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+/* Imagen de perfil */
+.hero__image {
+  display: flex;
+  justify-content: center;
+  animation: fadeInUp 1s ease 0.2s forwards; /* Entrada con retraso */
+  opacity: 0;
+}
+
+.hero__image-wrapper {
+  position: relative;
+}
+
+.hero__photo {
+  width: 320px;
+  height: 320px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  border: 3px solid rgba(56, 189, 248, 0.2);
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  transition: transform var(--transition-slow), box-shadow var(--transition-slow);
+}
+
+.hero__photo:hover {
+  transform: scale(1.02);
+  box-shadow: var(--shadow-lg), 0 0 40px rgba(56, 189, 248, 0.25);
+}
+
+/* Indicador de disponibilidad (badge verde) */
+.hero__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.2);
+  border-radius: 100px;
+  font-size: 0.8rem;
+  color: #22c55e;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+}
+
+/* Punto verde animado que parpadea */
+.hero__status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: var(--radius-full);
+  background: #22c55e;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+
+/* =============================================
+   SOBRE MÍ
+   Sección con 3 tarjetas que describen
+   las especialidades profesionales.
+   ============================================= */
+.about {
+  background: var(--color-bg-secondary); /* Fondo alternativo */
+}
+
+.about__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.about__card {
+  background: var(--gradient-card);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  transition: all var(--transition-base);
+}
+
+.about__card:hover {
+  border-color: rgba(56, 189, 248, 0.15);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md), var(--shadow-glow);
+}
+
+/* Ícono dentro de cada tarjeta */
+.about__icon {
+  width: 60px;
+  height: 60px;
+  border-radius: var(--radius-md);
+  background: rgba(56, 189, 248, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+  margin-bottom: 20px;
+  transition: all var(--transition-base);
+}
+
+/* Al hacer hover en la tarjeta, el ícono se rellena con gradiente */
+.about__card:hover .about__icon {
+  background: var(--gradient-accent);
+  color: var(--color-bg-primary);
+}
+
+.about__title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.about__text {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+
+/* =============================================
+   HABILIDADES TÉCNICAS
+   Grid de tarjetas con iconos de tecnología,
+   nombre y barra de progreso indicando nivel.
+   ============================================= */
+.skills__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.skill-card {
+  background: var(--gradient-card);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-md);
+  padding: 28px 24px;
+  text-align: center;
+  transition: all var(--transition-base);
+}
+
+.skill-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(56, 189, 248, 0.12);
+}
+
+.skill-card__icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  transition: transform var(--transition-base);
+}
+
+.skill-card:hover .skill-card__icon {
+  transform: scale(1.1); /* Agranda el ícono al hover */
+}
+
+/* Colores específicos para cada tecnología */
+.skill-card__icon--html { color: #e34f26; }    /* Naranja HTML5 */
+.skill-card__icon--css { color: #1572b6; }      /* Azul CSS3 */
+.skill-card__icon--java { color: #007396; }     /* Azul Java */
+.skill-card__icon--spring { color: #6db33f; }   /* Verde Spring Boot */
+.skill-card__icon--mysql { color: #4479a1; }    /* Azul MySQL */
+.skill-card__icon--git { color: #f05032; }      /* Naranja Git */
+.skill-card__icon--linux { color: #fcc624; }    /* Amarillo Linux */
+
+.skill-card__name {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--color-text-primary);
+}
+
+/* Barra de progreso (fondo gris) */
+.skill-card__bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.06);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Relleno de la barra con gradiente (el ancho se define en el HTML) */
+.skill-card__fill {
+  height: 100%;
+  border-radius: 8px;
+  background: var(--gradient-accent);
+  transition: width 1.5s ease;
+}
+
+
+/* =============================================
+   PROYECTOS DESTACADOS
+   Grid de 3 tarjetas con imagen, descripción y
+   tags de tecnologías. Overlay al hover.
+   ============================================= */
+.projects {
+  background: var(--color-bg-secondary);
+}
+
+.projects__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.project-card {
+  background: var(--gradient-card);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition-base);
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg), var(--shadow-glow);
+  border-color: rgba(56, 189, 248, 0.1);
+}
+
+/* Imagen del proyecto con relación de aspecto fija */
+.project-card__image {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 2; /* Mantiene proporción 3:2 */
+}
+
+.project-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.project-card:hover .project-card__image img {
+  transform: scale(1.05); /* Zoom sutil al hover */
+}
+
+/* Overlay oscuro que aparece al hacer hover */
+.project-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: var(--color-overlay);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;               /* Oculto por defecto */
+  transition: opacity var(--transition-base);
+}
+
+.project-card:hover .project-card__overlay {
+  opacity: 1; /* Se muestra al hover */
+}
+
+.project-card__body {
+  padding: 24px;
+}
+
+.project-card__title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.project-card__description {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+/* Contenedor de tags de tecnologías */
+.project-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Tags individuales (pequeñas etiquetas redondeadas) */
+.tag {
+  display: inline-block;
+  padding: 4px 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 100px;
+  letter-spacing: 0.3px;
+}
+
+/* Colores específicos para cada tag de tecnología */
+.tag--java { background: rgba(0, 115, 150, 0.15); color: #5fa4c0; }
+.tag--spring { background: rgba(109, 179, 63, 0.15); color: #8fc97b; }
+.tag--mysql { background: rgba(68, 121, 161, 0.15); color: #7aa3c2; }
+.tag--html { background: rgba(227, 79, 38, 0.15); color: #e8784f; }
+.tag--css { background: rgba(21, 114, 182, 0.15); color: #5a9bd4; }
+
+
+/* =============================================
+   EXPERIENCIA PROFESIONAL (Timeline)
+   Línea de tiempo vertical con fechas y
+   descripción de cada puesto de trabajo.
+   ============================================= */
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-left: 40px; /* Espacio para la línea vertical */
+}
+
+/* Línea vertical con gradiente que conecta los puntos */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 12px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--color-accent), var(--color-accent-secondary), transparent);
+}
+
+.timeline__item {
+  position: relative;
+  padding-bottom: 48px;
+}
+
+.timeline__item:last-child {
+  padding-bottom: 0; /* El último item no necesita padding inferior */
+}
+
+/* Punto indicador en la línea de tiempo */
+.timeline__dot {
+  position: absolute;
+  left: -32px;
+  top: 4px;
+  width: 16px;
+  height: 16px;
+  border-radius: var(--radius-full);
+  background: var(--gradient-accent);
+  border: 3px solid var(--color-bg-primary);
+  box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.2);
+  z-index: 1;
+}
+
+/* Tarjeta de contenido de cada experiencia */
+.timeline__content {
+  background: var(--gradient-card);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-md);
+  padding: 28px;
+  transition: all var(--transition-base);
+}
+
+.timeline__content:hover {
+  border-color: rgba(56, 189, 248, 0.1);
+  transform: translateX(4px); /* Se desplaza ligeramente a la derecha */
+  box-shadow: var(--shadow-md);
+}
+
+/* Meta: fecha y empresa */
+.timeline__meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+}
+
+.timeline__date {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  padding: 3px 10px;
+  border-radius: 100px;
+  background: rgba(56, 189, 248, 0.1);
+}
+
+.timeline__company {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+.timeline__title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.timeline__description {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.7;
+}
+
+
+/* =============================================
+   EDUCACIÓN
+   Grid de 3 tarjetas con la formación académica:
+   título, institución y año.
+   ============================================= */
+.education__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.edu-card {
+  background: var(--gradient-card);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  text-align: center;
+  transition: all var(--transition-base);
+}
+
+.edu-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(139, 92, 246, 0.15);
+}
+
+.edu-card__icon {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-md);
+  background: rgba(139, 92, 246, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  color: var(--color-accent-secondary);
+  transition: all var(--transition-base);
+}
+
+.edu-card:hover .edu-card__icon {
+  background: var(--gradient-accent-reverse);
+  color: var(--color-bg-primary);
+}
+
+.edu-card__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.edu-card__institution {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 4px;
+}
+
+.edu-card__year {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+
+/* =============================================
+   CONTACTO
+   Grid de 2 columnas: información de contacto
+   a la izquierda y formulario a la derecha.
+   ============================================= */
+.contact {
+  background: var(--color-bg-secondary);
+}
+
+.contact__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 48px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.contact__info {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Cada item de contacto (email, ubicación, teléfono) */
+.contact__item {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 20px;
+  background: var(--gradient-card);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-base);
+}
+
+.contact__item:hover {
+  border-color: rgba(56, 189, 248, 0.12);
+  transform: translateX(4px);
+}
+
+/* Icono del item de contacto */
+.contact__item-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background: rgba(56, 189, 248, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-accent);
+  flex-shrink: 0; /* Evita que se encoja */
+}
+
+.contact__label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.contact__value {
+  font-size: 0.95rem;
+  color: var(--color-text-primary);
+  font-weight: 500;
+  transition: color var(--transition-base);
+}
+
+a.contact__value:hover {
+  color: var(--color-accent);
+}
+
+.contact__social {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.social-link--contact {
+  background: var(--gradient-card);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+
+/* =============================================
+   FORMULARIO DE CONTACTO
+   Campos estilizados con fondo oscuro y
+   efectos de foco (focus) con brillo celeste.
+   ============================================= */
+.contact__form {
+  background: var(--gradient-card);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+}
+
+.form__group {
+  margin-bottom: 20px;
+}
+
+.form__label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  margin-bottom: 8px;
+}
+
+/* Inputs y textarea comparten los mismos estilos */
+.form__input,
+.form__textarea {
+  width: 100%;
+  padding: 12px 16px;
+  background: var(--color-bg-primary);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-sm);
+  color: var(--color-text-primary);
+  font-family: var(--font-primary);
+  font-size: 0.95rem;
+  transition: all var(--transition-base);
+  outline: none;
+}
+
+.form__input::placeholder,
+.form__textarea::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* Efecto de foco: borde celeste + sombra */
+.form__input:focus,
+.form__textarea:focus {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
+}
+
+/* Área de texto (mensaje) */
+.form__textarea {
+  resize: vertical;     /* Solo permite redimensionar verticalmente */
+  min-height: 120px;
+}
+
+
+/* =============================================
+   FOOTER (Pie de página)
+   3 columnas: marca, navegación y redes sociales.
+   Barra inferior con copyright.
+   ============================================= */
+.footer {
+  background: var(--color-bg-primary);
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 60px 0 30px;
+}
+
+.footer__inner {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 40px;
+}
+
+.footer__description {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  margin-top: 12px;
+  max-width: 320px;
+  line-height: 1.6;
+}
+
+.footer__heading {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.footer__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer__link {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  transition: color var(--transition-base), padding-left var(--transition-base);
+}
+
+.footer__link:hover {
+  color: var(--color-accent);
+  padding-left: 4px; /* Se desplaza ligeramente a la derecha */
+}
+
+.footer__social-links {
+  display: flex;
+  gap: 12px;
+}
+
+/* Barra inferior del footer */
+.footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer__copyright,
+.footer__credit {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+/* Corazón animado */
+.footer__heart {
+  color: #ef4444; /* Rojo */
+  display: inline-block;
+  animation: heartbeat 1.5s ease infinite; /* Animación de latido */
+}
+
+
+/* =============================================
+   ANIMACIONES CSS
+   Definiciones de los keyframes usados en
+   todo el sitio para animaciones suaves.
+   ============================================= */
+
+/* Animación de entrada: aparece desde abajo */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animación flotante para figuras decorativas */
+@keyframes floatShape {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(30px, -30px); }
+}
+
+/* Animación de pulso (parpadeo) */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* Animación de latido del corazón */
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+
+/* =============================================
+   MEDIA QUERIES - DISEÑO RESPONSIVE
+   Adapta el diseño para diferentes tamaños de
+   pantalla: tablet, móvil grande y móvil pequeño.
+   ============================================= */
+
+/* ---- Tablet: entre 768px y 1024px ---- */
+@media (max-width: 1024px) {
+  .hero__inner {
+    gap: 40px;
+  }
+
+  .hero__name {
+    font-size: 2.8rem;
+  }
+
+  .hero__photo {
+    width: 260px;
+    height: 260px;
+  }
+
+  .skills__grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas en tablet */
+  }
+
+  .projects__grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablet */
+  }
+}
+
+/* ---- Móvil grande / Tablet pequeño: hasta 768px ---- */
+@media (max-width: 768px) {
+  /*
+    Menú móvil: la lista de navegación se convierte
+    en un panel desplegable desde arriba.
+    Se activa agregando la clase .active con JavaScript.
+  */
+  .nav__list {
+    position: fixed;
+    top: var(--header-height);
+    left: 0;
+    right: 0;
+    background: rgba(15, 23, 42, 0.98);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    padding: 32px 24px;
+    gap: 20px;
+    transform: translateY(-100%);  /* Oculto arriba */
+    opacity: 0;
+    pointer-events: none;
+    transition: all var(--transition-base);
+    border-bottom: 1px solid rgba(56, 189, 248, 0.06);
+  }
+
+  .nav__list.active {
+    transform: translateY(0);   /* Visible */
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .nav-toggle {
+    display: flex; /* Muestra el botón hamburguesa */
+  }
+
+  .section {
+    padding: 72px 0;
+  }
+
+  .section__title {
+    font-size: 2rem;
+  }
+
+  /* Hero: cambia a una sola columna centrada */
+  .hero__inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .hero__description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero__actions {
+    justify-content: center;
+  }
+
+  .hero__social {
+    justify-content: center;
+  }
+
+  .hero__image {
+    order: -1; /* La imagen va primero en móvil */
+  }
+
+  .hero__photo {
+    width: 220px;
+    height: 220px;
+  }
+
+  .hero__name {
+    font-size: 2.2rem;
+  }
+
+  .hero__role {
+    font-size: 1.2rem;
+  }
+
+  .about__grid {
+    grid-template-columns: 1fr; /* Una columna */
+  }
+
+  .skills__grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+  }
+
+  .projects__grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .education__grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .contact__grid {
+    grid-template-columns: 1fr; /* Una columna */
+  }
+
+  .footer__inner {
+    grid-template-columns: 1fr; /* Una columna */
+    gap: 32px;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .timeline {
+    padding-left: 32px;
+  }
+
+  .timeline__dot {
+    left: -26px;
+    width: 14px;
+    height: 14px;
+  }
+}
+
+/* ---- Móvil pequeño: hasta 480px ---- */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px; /* Menos padding lateral */
+  }
+
+  .section {
+    padding: 56px 0;
+  }
+
+  .section__header {
+    margin-bottom: 40px;
+  }
+
+  .section__title {
+    font-size: 1.75rem;
+  }
+
+  .hero__name {
+    font-size: 1.8rem;
+  }
+
+  .hero__role {
+    font-size: 1rem;
+  }
+
+  .hero__photo {
+    width: 180px;
+    height: 180px;
+  }
+
+  .hero__actions {
+    flex-direction: column; /* Botones apilados */
+    align-items: center;
+  }
+
+  .skills__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .skill-card {
+    padding: 20px 16px;
+  }
+
+  .contact__form {
+    padding: 24px;
+  }
+
+  .about__card,
+  .edu-card {
+    padding: 24px;
+  }
+}
+
+
+/* =============================================
+   ACCESIBILIDAD
+   Estilos para usuarios con preferencias de
+   movimiento reducido y foco visible.
+   ============================================= */
+
+/* Si el usuario prefiere menos movimiento, desactivamos animaciones */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  html {
+    scroll-behavior: auto; /* Scroll normal sin animación */
+  }
+}
+
+/* Foco visible (accesibilidad con teclado) */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
