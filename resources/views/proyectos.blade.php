@@ -27,7 +27,7 @@
                <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?auto=format&fit=crop&w=800&q=80" alt="Clínica veterinaria atendiendo a una mascota" loading="lazy" width="600" height="400">
                <!-- Overlay que aparece al hacer hover con botón de acción -->
                <div class="project-card__overlay">
-                 <a href="#" class="btn btn--small btn--primary" aria-label="Ver proyecto Sistema para una Veterinaria">Ver proyecto</a>
+                 <a href="https://github.com/ahumadamob/2026_Progra_3_3.git" class="btn btn--small btn--primary" aria-label="Ver proyecto Sistema para una Veterinaria">Ver proyecto</a>
                </div>
              </div>
              <div class="project-card__body">
@@ -50,14 +50,16 @@
              <div class="project-card__image">
                <img src="https://images.unsplash.com/photo-1551601651-2a8555f1a136?auto=format&fit=crop&w=800&q=80" alt="Quirófano y entorno médico para la agenda pre-cirugía" loading="lazy" width="600" height="400">
                <div class="project-card__overlay">
-                 <a href="#" class="btn btn--small btn--primary" aria-label="Ver proyecto Agenda Pre-cirugía">Ver proyecto</a>
+                 <a href="https://startmed.onrender.com" class="btn btn--small btn--primary" aria-label="Ver proyecto Agenda Pre-cirugía">Ver proyecto</a>
                </div>
              </div>
              <div class="project-card__body">
                <h3 class="project-card__title">Agenda Pre-cirugía</h3>
                <p class="project-card__description">
-                 Desarrollo web full stack para la gestión de cirugías, creado con PHP,
-                 framework Laravel y base de datos con ORM para organizar pacientes y quirófanos.
+                 Proyecto colaborativo desarrollado durante un hackathon
+                 orientado a optimizar la gestión de cirugías
+                 pacientes y quirófanos mediante una aplicación web Full Stack 
+                
                </p>
                <!-- Tags de tecnologías utilizadas -->
                <div class="project-card__tags">
