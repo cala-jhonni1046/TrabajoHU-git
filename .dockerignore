@@ -1,0 +1,41 @@
+# Evita copiar archivos que no deben entrar en la imagen.
+# .dockerignore solo afecta al contexto de build de Docker, NO al repositorio Git.
+
+.git
+.github
+.vscode
+.idea
+
+# Variables de entorno y secretos (se configuran en el proveedor, p.ej. Render)
+.env
+.env.backup
+.env.production
+.env.*
+!.env.example
+
+# Dependencias (se instalan dentro del build con composer/npm)
+vendor
+node_modules
+
+# Assets/artefactos generados durante el build
+public/build
+public/hot
+public/storage
+
+# Eventuales claves y caches locales
+storage/*.key
+storage/pail
+storage/logs/*.log
+storage/framework/cache/data/*
+storage/framework/sessions/*
+storage/framework/views/*
+storage/framework/testing/*
+.phpunit.cache
+.phpunit.result.cache
+.phpactor.json
+
+# Varios
+.coverage
+coverage
+npm-debug.log
+yarn-error.log
