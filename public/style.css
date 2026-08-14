@@ -624,9 +624,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .skill-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-md);
-  border-color: rgba(56, 189, 248, 0.12);
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px -12px rgba(0, 0, 0, 0.35);
+  border-color: rgba(56, 189, 248, 0.18);
 }
 
 .skill-card__icon {
@@ -637,21 +637,70 @@ h1, h2, h3, h4, h5, h6 {
   align-items: center;
   justify-content: center;
   border-radius: var(--radius-md);
-  transition: transform var(--transition-base);
+  transition: transform var(--transition-base), filter var(--transition-base);
 }
 
 .skill-card:hover .skill-card__icon {
-  transform: scale(1.1); /* Agranda el ícono al hover */
+  transform: scale(1.12) translateY(-2px); /* Agranda y eleva el ícono al hover */
+  animation: skill-glow 2.4s ease-in-out infinite;
+}
+
+/* Brillo sutil (glow) de color sobre el ícono al hacer hover */
+@keyframes skill-glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 2px currentColor);
+  }
+  50% {
+    filter: drop-shadow(0 0 10px currentColor);
+  }
 }
 
 /* Colores específicos para cada tecnología */
 .skill-card__icon--html { color: #e34f26; }    /* Naranja HTML5 */
-.skill-card__icon--css { color: #1572b6; }      /* Azul CSS3 */
-.skill-card__icon--java { color: #007396; }     /* Azul Java */
-.skill-card__icon--spring { color: #6db33f; }   /* Verde Spring Boot */
+.skill-card__icon--docker { color: #2496ed; }   /* Azul Docker */
 .skill-card__icon--mysql { color: #4479a1; }    /* Azul MySQL */
 .skill-card__icon--git { color: #f05032; }      /* Naranja Git */
 .skill-card__icon--linux { color: #fcc624; }    /* Amarillo Linux */
+
+/* Tarjeta combinada: Java + Spring Boot (ambos logos en el mismo recuadro) */
+.skill-card__icon--dual {
+  width: 84px;
+  height: 64px;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+}
+
+.skill-card__icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.skill-card__logo {
+  width: 30px;
+  height: 30px;
+  flex-shrink: 0;
+  transition: transform var(--transition-base);
+}
+
+.skill-card:hover .skill-card__logo {
+  transform: scale(1.1); /* Ambos logos crecen al hover */
+}
+
+.skill-card__logo--java { color: #e76f00; }   /* Naranja/rojo Java */
+.skill-card__logo--spring { color: #6db33f; } /* Verde Spring Boot */
+
+.skill-card__icons-plus {
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: var(--color-text-secondary);
+  opacity: 0.6;
+}
 
 .skill-card__name {
   font-size: 1rem;
@@ -1404,6 +1453,20 @@ a.contact__value:hover {
 
   .skill-card {
     padding: 20px 16px;
+  }
+
+  /* Tarjeta combinada en pantallas pequeñas: logos y nombre compactos */
+  .skill-card__icon--dual {
+    width: 72px;
+  }
+
+  .skill-card__logo {
+    width: 26px;
+    height: 26px;
+  }
+
+  .skill-card--dual .skill-card__name {
+    font-size: 0.9rem;
   }
 
   .contact__form {
