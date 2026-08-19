@@ -662,6 +662,9 @@ h1, h2, h3, h4, h5, h6 {
 .skill-card__icon--mysql { color: #4479a1; }    /* Azul MySQL */
 .skill-card__icon--git { color: #f05032; }      /* Naranja Git */
 .skill-card__icon--linux { color: #fcc624; }    /* Amarillo Linux */
+.skill-card__icon--js { color: #f7df1e; }       /* Amarillo JavaScript */
+.skill-card__icon--php { color: #777bb4; }      /* Azul/violeta PHP */
+.skill-card__icon--laravel { color: #ff2d20; }  /* Rojo Laravel */
 
 /* Tarjeta combinada: Java + Spring Boot (ambos logos en el mismo recuadro) */
 .skill-card__icon--dual {
@@ -1505,4 +1508,135 @@ a.contact__value:hover {
 :focus-visible {
   outline: 2px solid var(--color-accent);
   outline-offset: 2px;
+}
+
+/* =============================================
+   INTERACCIONES JAVASCRIPT (js/main.js)
+   Clases que controla el script principal:
+   - Navegación activa (scroll spy)
+   - Botón hamburguesa animado
+   - Aparición de secciones al hacer scroll
+   - Spotlight que sigue al cursor en tarjetas
+   - Botón flotante para volver arriba
+   ============================================= */
+
+/* Enlace del menú para la sección visible */
+.nav__link.is-active {
+  color: var(--color-text-primary);
+}
+
+.nav__link.is-active::after {
+  width: 100%;
+}
+
+/* Hamburguesa animada: las 3 barras forman una X */
+.nav-toggle.is-active .nav-toggle__bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.nav-toggle.is-active .nav-toggle__bar:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.is-active .nav-toggle__bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---- Aparición de secciones al hacer scroll ---- */
+/* Solo se ocultan los elementos cuando JS está activo (.js en <html>) */
+.js .reveal {
+  opacity: 0;
+}
+
+.js .reveal.is-visible {
+  animation: revealUp 0.7s ease both;
+}
+
+.js .reveal.is-done {
+  animation: none;
+  opacity: 1;
+}
+
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    transform: translateY(34px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Enlace que cubre toda la imagen del proyecto (accesible en táctil) */
+.project-card__link {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+/* ---- Spotlight: resplandor sutil que sigue al cursor ---- */
+.card-spotlight {
+  position: relative;
+  isolation: isolate;
+}
+
+.card-spotlight::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(320px circle at var(--mx, 50%) var(--my, 50%), rgba(56, 189, 248, 0.1), transparent 55%);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.card-spotlight:hover::before,
+.card-spotlight:focus-within::before {
+  opacity: 1;
+}
+
+/* ---- Botón flotante para volver arriba ---- */
+.back-to-top {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 900;
+  width: 48px;
+  height: 48px;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: var(--radius-md);
+  background: var(--color-bg-secondary);
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(12px);
+  transition: all var(--transition-base);
+}
+
+.back-to-top.is-visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  background: var(--gradient-accent);
+  color: var(--color-bg-primary);
+}
+
+@media (max-width: 480px) {
+  .back-to-top {
+    right: 16px;
+    bottom: 16px;
+    width: 44px;
+    height: 44px;
+  }
 }

@@ -1,16 +1,10 @@
-@extends('layouts.app')
 
-@section('title', 'Experiencia | Jonatan Cala')
-
-@section('content')
-
-<!-- ==========================================
-     EXPERIENCIA PROFESIONAL
-     Línea de tiempo (timeline) con los trabajos anteriores
-     ========================================== -->
-     <section id="experience" class="experience section">
-       <div class="container">
-         <div class="section__header">
+<!-- ════════════════════════════════════════════
+     SECCIÓN: EXPERIENCIA
+     ════════════════════════════════════════════ -->
+     <section id="experiencia" class="experience section scroll-target" data-section data-section-label="Experiencia">
+        <div class="container">
+          <div class="section__header reveal">
            <span class="section__tag">Experiencia</span>
            <h2 class="section__title">Trayectoria profesional</h2>
            <p class="section__subtitle">
@@ -19,10 +13,10 @@
          </div>
  
          <!-- Timeline: lista vertical con fechas -->
-         <div class="timeline">
+         <div class="timeline" data-group>
  
            <!-- Experiencia 1: más reciente -->
-           <div class="timeline__item">
+           <div class="timeline__item reveal">
              <!-- Punto indicador en la línea de tiempo -->
              <div class="timeline__dot" aria-hidden="true"></div>
              <div class="timeline__content">
@@ -40,7 +34,7 @@
            </div>
  
            <!-- Experiencia 2 -->
-           <div class="timeline__item">
+           <div class="timeline__item reveal">
              <div class="timeline__dot" aria-hidden="true"></div>
              <div class="timeline__content">
                <div class="timeline__meta">
@@ -57,7 +51,7 @@
            </div>
  
            <!-- Experiencia 3 -->
-           <div class="timeline__item">
+           <div class="timeline__item reveal">
              <div class="timeline__dot" aria-hidden="true"></div>
              <div class="timeline__content">
                <div class="timeline__meta">
@@ -75,5 +69,4 @@
          </div>
        </div>
      </section>
-
-@endsection
+<!-- / SECCIÓN: EXPERIENCIA -->
