@@ -659,12 +659,15 @@ h1, h2, h3, h4, h5, h6 {
 /* Colores específicos para cada tecnología */
 .skill-card__icon--html { color: #e34f26; }    /* Naranja HTML5 */
 .skill-card__icon--docker { color: #2496ed; }   /* Azul Docker */
-.skill-card__icon--mysql { color: #4479a1; }    /* Azul MySQL */
+.skill-card__icon--mysql { color: #00758f; }    /* Azul oficial MySQL */
 .skill-card__icon--git { color: #f05032; }      /* Naranja Git */
 .skill-card__icon--linux { color: #fcc624; }    /* Amarillo Linux */
 .skill-card__icon--js { color: #f7df1e; }       /* Amarillo JavaScript */
 .skill-card__icon--php { color: #777bb4; }      /* Azul/violeta PHP */
 .skill-card__icon--laravel { color: #ff2d20; }  /* Rojo Laravel */
+.skill-card__icon--python { color: #3776ab; }   /* Azul Python */
+.skill-card__icon--django { color: #44b78b; }   /* Verde claro Django */
+.skill-card__icon--tryton { color: #ededed; }   /* Claro Tryton (marca oscura) */
 
 /* Tarjeta combinada: Java + Spring Boot (ambos logos en el mismo recuadro) */
 .skill-card__icon--dual {
@@ -695,7 +698,7 @@ h1, h2, h3, h4, h5, h6 {
   transform: scale(1.1); /* Ambos logos crecen al hover */
 }
 
-.skill-card__logo--java { color: #e76f00; }   /* Naranja/rojo Java */
+.skill-card__logo--java { color: #e76f00; height: 36px; }   /* Naranja/rojo Java */
 .skill-card__logo--spring { color: #6db33f; } /* Verde Spring Boot */
 
 .skill-card__icons-plus {
