@@ -64,7 +64,7 @@
                Ejemplo:
                <img src="img/profile.jpg" alt="Foto de Jonatan Cala" ...>
              -->
-             <img src="{{ asset('perfil.jpeg') }}" alt="Foto de perfil de Jonatan Cala" class="hero__photo" width="320" height="320" loading="eager">
+             <img src="/perfil.jpeg" alt="Foto de perfil de Jonatan Cala" class="hero__photo" width="320" height="320" loading="eager">
              <!-- Indicador de disponibilidad -->
              <div class="hero__status">
                <span class="hero__status-dot"></span>

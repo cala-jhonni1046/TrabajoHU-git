@@ -26,7 +26,7 @@
   <title>@yield('title', 'Jonatan Cala | Full Stack Developer')</title>
 
   <!-- === HOJA DE ESTILOS === -->
-  <link rel="stylesheet" href="{{ asset('style.css') }}">
+  <link rel="stylesheet" href="/style.css">
 
   <!-- === FAVICON (ícono de la pestaña) === -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%2338bdf8'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='18' font-weight='bold' fill='%230f172a' text-anchor='middle'%3EJC%3C/text%3E%3C/svg%3E">
@@ -135,7 +135,7 @@
   </button>
 
   <!-- Script principal con las interacciones del portafolio -->
-  <script src="{{ asset('js/main.js') }}" defer></script>
+  <script src="/js/main.js" defer></script>
 
 </body>
 </html>
